@@ -8,10 +8,6 @@ using namespace Rcpp;
 List gibbs_pca4(int M, int K, NumericMatrix centeredData, NumericVector adjMat, NumericVector a_0) {
   int D = centeredData.nrow();
   int N = centeredData.ncol();
-  //float xi_mu_nu = 0;
-  //float xi_mu_de = 0;
-  //float sumtempxi = 0;
-  //float sumtemp = 0;
   // set up initials
   NumericVector xi(M*K*D);
   NumericMatrix sigma2(M,N);
@@ -23,14 +19,7 @@ List gibbs_pca4(int M, int K, NumericMatrix centeredData, NumericVector adjMat, 
       xi(k*D+t) = R::rnorm(0,1);
     }
   }
-  
-//  a(0,0) = 15.93259;
-//  a(1,0) = 13.95383;
-//  a(2,0) = 11.52166;
-//  a(3,0) = 10.13621;
-//  a(4,0) = 8.59729;
-  
-  
+      
   for (int t=1;t<D;t++){
     for (int k=0;k<K;k++){
       float tempa1 = 0;
